@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=thermostat" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=air" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=sunny" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=partly_cloudy_day" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=rainy" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+</head>
+<body>
+    <div class="data">
+        <div class="data-inside">
+
+            <div >
+                <h1>Welcome to Whether Application</h1>
+            </div>
+            <div class="input-div" >
+                <input type="text" placeholder="Enter the city name here" id="input-text" />
+                <span class="material-symbols-outlined search"  id="search-id">
+                    search
+                </span>
+            </div>
+
+            <div class="grid-parent ">
+                <div class="grid-child child2" >
+                    <div class="child2-children1">
+                        <img src="images/morning.jpg"  alt="">
+                        <div>
+
+                            <h2 id="current-weather">Good morning</h2>
+                            <p id="wind-speed"></p>
+                        </div>
+                    </div>
+                    <div class="child2-children2">
+                        <h1>Details</h1>
+
+                            <p class="grid-child-feilds temp">Teperature:</p>
+                            <p class="grid-child-feilds feels-like">Feels like</p>
+                            <p class="grid-child-feilds max-temp">Max-temp:</p>
+                            <p class="grid-child-feilds min-temp">Min-temp:</p>
+                        
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
