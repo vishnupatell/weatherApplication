@@ -1,118 +1,133 @@
-*{
-    margin: 0px;
-    padding: 0px;
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-body{
-    height: 100vh;
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
     width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(226, 218, 195);
+    height: 100vh;
+    color: #333;
 }
-.data{
-    width: 60%;
-    height: 90%;
-    background: linear-gradient( to right, rgb(201, 216, 137),rgb(234, 149, 149));
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #dbe9f4;
+    --third-color: #b8d8e3;
+    --card-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 2rem;
-
-    
-
 }
 
-.data-inside{
+.search-container {
+    margin-bottom: 2rem;
     display: flex;
-    /* justify-content: center; */
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
+    gap: 1rem;
 }
 
-.input-div{
-    margin-top:2rem;
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 15rem;
-
+#input-container {
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 300px;
 }
-.input-div> input{
-    padding: 0.5rem;
-    width: 20rem;
-    border: 2px solid black;
-    border-radius: 1rem;
-    
 
-}
-.search{
-    position: absolute;
-    right:10px;
-    /* background-color: bisque; */
-    width: fit-content;
-    height: fit-content;
+.search-container > button {
+    padding: 12px 20px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-container > button:hover {
+    background-color: #34495e;
+}
+
+.weather-container {
+    background: var(--secondary-color);
+    width: 90%;
+    max-width: 700px;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--card-shadow);
+}
+
+.weather-container-first {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.temperature-wind-speed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.temp {
+    font-size: 5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.current-weather {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: #555;
+}
+
+#weather-icon-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#wind-speed-container,
+#humidity-container {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    gap: 1rem;
+}
+
+.feels-like-temp {
+    margin-top: 2rem;
+    background: var(--third-color);
+    padding: 1.5rem;
     border-radius: 1rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-
-/* grid styling */
-
-.grid-parent{
-    height: 100%;
-    width: 60%;
-    margin-top: 10px;
-    gap:2px;
-    padding: 10px;
-    background:linear-gradient();
-}
-
-.grid-child{
-    display: grid;
-    grid-template-columns: 60% 40%;
-    border: 2px solid black;
-    height: 90%;
-    grid-template-rows: 1fr;
-
-}
-
-.child2{
-    display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
-    padding: 10px;
+    gap: 1rem;
 }
-.child2-children1>img{
-    height:100px;
-    border-radius: 30px;
-    width: 100px;
-    
-}
-.child2-children2{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 3rem;
-}
-.child2-children1{
+
+#max-temp-container,
+#min-temp-container {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-
+    gap: 1rem;
 }
 
-.child2-children1>h1{
-    margin-right: 20px;
+.fa-solid {
+    font-size: 1.8rem;
+    color: var(--primary-color);
 }
 
-.child1-children2-child1{
-    display: flex;
-    /* flex-direction: column; */
-    /* justify-content: space-around; */
+#loading {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    font-weight: bold;
 }

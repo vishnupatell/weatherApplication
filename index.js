@@ -1,71 +1,72 @@
 const API_KEY = "db4d4bf6bf06bd7f055046e184629cc7";
-let place ="india" ;
-let weather_images = {
-    "Rain":"images/rainy.jpg",
-    "Clouds": "images/partlysunny.jpg",
-    "Clear":"images/sunny.jpg",
-    "default":"images/morning.jpg"
-}
+let place = "india";
 
-let input = document.getElementById("input-text")
-let search = document.getElementById("search-id")
+let input = document.getElementById("input-container");
+let search = document.getElementById("search-id");
+let loading = document.getElementById("loading");
 
-input.addEventListener("keypress",(e)=>{
-    if(e.key ==="Enter"){
+input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
         let value = input.value.trim();
-        if(!value){
-            alert("please Enter the city name")
+        if (!value) {
+            alert("Please enter the city name");
             return;
         }
         place = value;
         fetchWeather();
     }
-})
+});
 
-search.addEventListener("click",()=>{
+search.addEventListener("click", () => {
     let value = input.value.trim();
-    if(!value){
-        alert("Please Enter a value");
+    if (!value) {
+        alert("Please enter a value");
         return;
     }
     place = value;
     fetchWeather();
-})
+});
 
 let fetchWeather = async () => {
+    loading.style.display="block";
     const API_VALUE = `https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${API_KEY}&units=metric`;
-    try{
-        let response = await fetch(`${API_VALUE}`);
-        if(!response.ok){
-            alert("There is something wrong here");
+    try {
+        let response = await fetch(API_VALUE);
+        if (!response.ok) {
+            alert("City not found or error fetching data");
             return;
         }
+        
         let data = await response.json();
+        console.log(data);
 
-        //temperature and humidity details
-        let {feels_like,humidity, temp, temp_max, temp_min} = data.main;
-        document.getElementsByClassName("temp")[0].innerHTML = `Temperature: ${temp}`
-        document.getElementsByClassName("feels-like")[0].innerHTML = `Feels Like: ${feels_like}`;
-        document.getElementsByClassName("max-temp")[0].innerHTML = `Maximum: ${temp_max}`;
-        document.getElementsByClassName("min-temp")[0].innerHTML = `Minimum: ${temp_min}`
+        
+            loading.style.display="none"
+        
+        
+            
+            let { feels_like, humidity, temp, temp_max, temp_min } = data.main;
+            document.querySelector(".temp").innerHTML = ` ${temp}°C`;
+            document.querySelector(".feels-like").innerHTML = `Feels Like: ${feels_like}°C`;
+            document.querySelector(".temp_max").innerHTML = `${temp_max}°C`;
+            document.querySelector(".temp_min").innerHTML = `${temp_min}°C`;
+            document.getElementById("humidity").innerHTML = ` ${humidity}%`;
+            
+            // Weather description
+            let { description } = data.weather[0];
+            document.querySelector(".current-weather").innerHTML = ` ${description}`;
+    
+    
+            // Wind speed
+            const { speed } = data.wind;
+            document.getElementById("wind-speed").innerHTML = `${speed} m/s`;
+        
+        
 
-        //cloud and rain details
-        let weatherImg = document.querySelector(".child2-children1 img");
-        let weatherText = document.getElementById("current-weather");
-        let {description,main} = data.weather[0];
-        let matchKey = weather_images[main] || weather_images["default"]
-        weatherImg.src = matchKey;
-        weatherText.innerText = `${description}`;
+        // Update temperature and humidity
+    //    data?datas(data):laoding.style.display="block"
 
-        //wind speed details
-        const {speed} = data.wind;
-        document.getElementById("wind-speed").innerHTML = `wind speed: ${speed} m/s`
-
-
-
-    }catch(error){
-        alert(`There is an error: ${error}`)
+    } catch (error) {
+        alert(`There is an error: ${error}`);
     }
-}
-
-
+};
